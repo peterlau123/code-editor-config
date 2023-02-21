@@ -32,6 +32,7 @@ call vundle#begin()
 " 加载插件
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/nerdtree'
+Plugin 'elzr/vim-json'
 Bundle 'luochen1990/rainbow'
 Plugin 'https://github.com/antoyo/vim-licenses.git'
 call vundle#end()
@@ -73,3 +74,10 @@ set statusline=[%n]\ %f%m%r%h\ \|\ \ pwd:\ %{CurDir()}\ \ \|%=\|\ %l,%c\ %p%%\ \
 "vim-license
 let g:licenses_authors_name = 'Xin, Liu <@liuxin_signal@163.com>'
 let g:licenses_default_commands = ['gpl', 'mit']
+
+"add  clang-format integration
+function! Formatonsave()
+  let l:formatdiff = 1
+  pyf /usr/local/share/clang/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.hpp,*.cc,*.cpp call Formatonsave()
