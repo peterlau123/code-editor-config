@@ -77,7 +77,7 @@ let g:licenses_default_commands = ['gpl', 'mit']
 
 "add  clang-format integration
 function! Formatonsave()
-  let l:formatdiff = 1
-  pyf /usr/local/share/clang/clang-format.py
+   let l:formatdiff = 1
+   pyf /usr/local/share/clang/clang-format.py
 endfunction
 autocmd BufWritePre *.h,*.hpp,*.cc,*.cpp call Formatonsave()
